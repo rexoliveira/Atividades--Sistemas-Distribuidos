@@ -1,0 +1,11 @@
+{
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "c:/java/jdk-17.0.4/lib/jrt-fs.jar"
+  ],
+  "java.jdt.ls.java.home": "",
+  "java.project.sourcePaths": [
+    "Atividade1-Prof.Luciano/Resposta-Atividade1/src",
+    "Atividade1-Prof.Luciano-Refeita-Atividade-Arquivos/src/atividade_realizada"
+  ]
+}
