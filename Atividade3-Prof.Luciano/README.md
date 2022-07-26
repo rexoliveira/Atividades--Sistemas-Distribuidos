@@ -1,9 +1,18 @@
-#Atividade 3 - Sistemas Distribuidos - Prof.Luciano
+## Getting Started
 
-<p>Desenvolva um programa que utilize 2 Threads, PAR e IMPAR,<br> onde cada Thread escreve ou PAR ou IMPAR.<br>
+Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
 
-Observação: A saida dos dados deve ser sincronizada para não<br> repetir as palavras PAR ou IMPAR consecutivamente.<br> 
+## Folder Structure
 
-EX:<br> 
+The workspace contains two folders by default, where:
 
-PAR IMPAR PAR IMPAR PAR IMPAR</p>
+- `src`: the folder to maintain sources
+- `lib`: the folder to maintain dependencies
+
+Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+
+> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+
+## Dependency Management
+
+The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
