@@ -14,12 +14,11 @@ public class Cliente implements Runnable {
     private PrintStream saida;
     public String palavra ;
 
-    public Cliente(String palavra) {
+    public Cliente(String palavra, String porta) {
         this.palavra = palavra;
 
         try {
-            socket = new Socket("localhost", 12345);
-            Mensagem("Conectador:" + socket);
+            socket = new Socket("localhost", Integer.parseInt(porta));
 
             saida = new PrintStream(socket.getOutputStream());
 

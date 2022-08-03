@@ -5,22 +5,21 @@
  */
 package projetocliente;
 
-import java.io.IOException;
-import java.io.PrintStream;
-import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import projetoservidor.Servidor;
+import java.awt.Rectangle;
+import servidorcliente.ServidorCliente;
 
 public class ChatCliente extends javax.swing.JFrame {
 
-    
     public ChatCliente() {
         initComponents();
-        new Thread(new Servidor()).start();        
-    }
+        ServidorCliente servidorCliente = new ServidorCliente();
 
-   
+        Rectangle server = servidorCliente.getBounds();
+//        centro da tela
+        servidorCliente.setLocationRelativeTo(null);
+
+        servidorCliente.setVisible(true);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,18 +35,26 @@ public class ChatCliente extends javax.swing.JFrame {
         txaCliente1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         btnEnviarClt_1 = new javax.swing.JButton();
+        txfPortClt_1 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jpCliente2 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         txaCliente2 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         btnEnviarClt_2 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        txfPortClt_2 = new javax.swing.JTextField();
         jpCliente3 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         txaCliente3 = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         btnEnviarClt_3 = new javax.swing.JButton();
+        txfPortClt_3 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
+        setResizable(false);
 
         jpCliente1.setBackground(new java.awt.Color(51, 153, 255));
         jpCliente1.setMinimumSize(new java.awt.Dimension(230, 350));
@@ -73,6 +80,12 @@ public class ChatCliente extends javax.swing.JFrame {
             }
         });
 
+        txfPortClt_1.setBackground(new java.awt.Color(0, 0, 0));
+        txfPortClt_1.setForeground(new java.awt.Color(51, 204, 0));
+        txfPortClt_1.setText("12345");
+
+        jLabel6.setText("Porta:");
+
         javax.swing.GroupLayout jpCliente1Layout = new javax.swing.GroupLayout(jpCliente1);
         jpCliente1.setLayout(jpCliente1Layout);
         jpCliente1Layout.setHorizontalGroup(
@@ -81,25 +94,35 @@ public class ChatCliente extends javax.swing.JFrame {
                 .addGroup(jpCliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpCliente1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane4))
-                    .addGroup(jpCliente1Layout.createSequentialGroup()
-                        .addGap(79, 79, 79)
                         .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txfPortClt_1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpCliente1Layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(btnEnviarClt_1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jpCliente1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jpCliente1Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(btnEnviarClt_1)
-                .addContainerGap(79, Short.MAX_VALUE))
         );
         jpCliente1Layout.setVerticalGroup(
             jpCliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpCliente1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
+                .addGroup(jpCliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpCliente1Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel1))
+                    .addGroup(jpCliente1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jpCliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txfPortClt_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(btnEnviarClt_1)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
@@ -127,34 +150,47 @@ public class ChatCliente extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setText("Porta:");
+
+        txfPortClt_2.setBackground(new java.awt.Color(0, 0, 0));
+        txfPortClt_2.setForeground(new java.awt.Color(51, 204, 0));
+        txfPortClt_2.setText("12345");
+
         javax.swing.GroupLayout jpCliente2Layout = new javax.swing.GroupLayout(jpCliente2);
         jpCliente2.setLayout(jpCliente2Layout);
         jpCliente2Layout.setHorizontalGroup(
             jpCliente2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpCliente2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jpCliente2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
                     .addGroup(jpCliente2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
-                    .addGroup(jpCliente2Layout.createSequentialGroup()
-                        .addGroup(jpCliente2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpCliente2Layout.createSequentialGroup()
-                                .addGap(76, 76, 76)
-                                .addComponent(jLabel2))
-                            .addGroup(jpCliente2Layout.createSequentialGroup()
-                                .addGap(75, 75, 75)
-                                .addComponent(btnEnviarClt_2)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txfPortClt_2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(jpCliente2Layout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(btnEnviarClt_2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpCliente2Layout.setVerticalGroup(
             jpCliente2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpCliente2Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(jLabel2)
+                .addGroup(jpCliente2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpCliente2Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel2))
+                    .addGroup(jpCliente2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jpCliente2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txfPortClt_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addComponent(btnEnviarClt_2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -183,6 +219,12 @@ public class ChatCliente extends javax.swing.JFrame {
             }
         });
 
+        txfPortClt_3.setBackground(new java.awt.Color(0, 0, 0));
+        txfPortClt_3.setForeground(new java.awt.Color(51, 204, 0));
+        txfPortClt_3.setText("12345");
+
+        jLabel4.setText("Porta:");
+
         javax.swing.GroupLayout jpCliente3Layout = new javax.swing.GroupLayout(jpCliente3);
         jpCliente3.setLayout(jpCliente3Layout);
         jpCliente3Layout.setHorizontalGroup(
@@ -191,28 +233,37 @@ public class ChatCliente extends javax.swing.JFrame {
                 .addGroup(jpCliente3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpCliente3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
                     .addGroup(jpCliente3Layout.createSequentialGroup()
-                        .addGroup(jpCliente3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpCliente3Layout.createSequentialGroup()
-                                .addGap(80, 80, 80)
-                                .addComponent(jLabel3))
-                            .addGroup(jpCliente3Layout.createSequentialGroup()
-                                .addGap(75, 75, 75)
-                                .addComponent(btnEnviarClt_3)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(75, 75, 75)
+                        .addComponent(btnEnviarClt_3)
+                        .addGap(0, 74, Short.MAX_VALUE))
+                    .addGroup(jpCliente3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txfPortClt_3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jpCliente3Layout.setVerticalGroup(
             jpCliente3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpCliente3Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jpCliente3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpCliente3Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel3))
+                    .addGroup(jpCliente3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jpCliente3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txfPortClt_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEnviarClt_3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -222,9 +273,9 @@ public class ChatCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jpCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(35, 35, 35)
                 .addComponent(jpCliente2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(33, 33, 33)
                 .addComponent(jpCliente3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -243,22 +294,22 @@ public class ChatCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEnviarClt_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarClt_1ActionPerformed
-        new Thread(new Cliente(txaCliente1.getText())).start();
-            //Apaga campo mensagem
-            txaCliente1.setText("");
-        
+        new Thread(new Cliente(txaCliente1.getText(),txfPortClt_1.getText())).start();
+        //Apaga campo mensagem
+        txaCliente1.setText("");
+
     }//GEN-LAST:event_btnEnviarClt_1ActionPerformed
 
     private void btnEnviarClt_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarClt_2ActionPerformed
-       new Thread(new Cliente(txaCliente2.getText())).start();
-            //Apaga campo mensagem
-            txaCliente2.setText("");
+        new Thread(new Cliente(txaCliente2.getText(),txfPortClt_2.getText())).start();
+        //Apaga campo mensagem
+        txaCliente2.setText("");
     }//GEN-LAST:event_btnEnviarClt_2ActionPerformed
 
     private void btnEnviarClt_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarClt_3ActionPerformed
-        new Thread(new Cliente(txaCliente3.getText())).start();
-            //Apaga campo mensagem
-            txaCliente3.setText("");
+        new Thread(new Cliente(txaCliente3.getText(),txfPortClt_3.getText())).start();
+        //Apaga campo mensagem
+        txaCliente3.setText("");
     }//GEN-LAST:event_btnEnviarClt_3ActionPerformed
 
     /**
@@ -303,6 +354,9 @@ public class ChatCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
@@ -312,5 +366,8 @@ public class ChatCliente extends javax.swing.JFrame {
     private javax.swing.JTextArea txaCliente1;
     private javax.swing.JTextArea txaCliente2;
     private javax.swing.JTextArea txaCliente3;
+    private javax.swing.JTextField txfPortClt_1;
+    private javax.swing.JTextField txfPortClt_2;
+    private javax.swing.JTextField txfPortClt_3;
     // End of variables declaration//GEN-END:variables
 }
