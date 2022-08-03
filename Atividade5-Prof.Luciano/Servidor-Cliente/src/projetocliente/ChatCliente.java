@@ -11,7 +11,9 @@ import servidorcliente.ServidorCliente;
 public class ChatCliente extends javax.swing.JFrame {
 
     public ChatCliente() {
+        
         initComponents();
+        
         ServidorCliente servidorCliente = new ServidorCliente();
 
         Rectangle server = servidorCliente.getBounds();
