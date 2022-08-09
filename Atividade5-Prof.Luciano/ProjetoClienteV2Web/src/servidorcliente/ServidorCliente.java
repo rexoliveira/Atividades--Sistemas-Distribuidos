@@ -152,7 +152,7 @@ public class ServidorCliente extends javax.swing.JFrame {
         txfPortServer.setBackground(new java.awt.Color(0, 0, 0));
         txfPortServer.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         txfPortServer.setForeground(new java.awt.Color(102, 255, 51));
-        txfPortServer.setText("12345");
+        txfPortServer.setText("8081");
         txfPortServer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txfPortServerActionPerformed(evt);

@@ -36,6 +36,11 @@ public class Cliente implements Runnable {
                 conectado = false;
             } else {
                 saida.println(palavra);
+                saida.write("HTTP/1.1 200 OK\r\n".getBytes());
+            saida.write("\r\n".getBytes());
+            saida.write(palavra.getBytes());
+            saida.write("\r\n\r\n".getBytes());
+            saida.flush();
             }
 
             saida.close();
