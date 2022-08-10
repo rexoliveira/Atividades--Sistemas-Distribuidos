@@ -1,32 +1,26 @@
 package projetocliente;
 
-import java.awt.TextArea;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
 
-public class Cliente  extends JFrame implements Runnable {
+public class Cliente implements Runnable {
 
     private Socket socket;
+    private boolean conectado = false;
     private PrintStream saida;
-    public String palavra;
-    public String porta;
-    public boolean rodando;
-    
-    
+    public String palavra ;
 
-    public Cliente() {
-        new Thread(new Cliente()).start();
+    public Cliente(String palavra, String porta) {
+        this.palavra = palavra;
+
         try {
-            socket = new Socket("localhost", Integer.parseInt("12345"));
+            socket = new Socket("localhost", Integer.parseInt(porta));
 
             saida = new PrintStream(socket.getOutputStream());
-
-            rodando = true;
 
         } catch (IOException ex) {
             Mensagem("Erro tentando conectar ao servidor.");
@@ -34,26 +28,20 @@ public class Cliente  extends JFrame implements Runnable {
         }
     }
 
-    public void enviar(String palavra, String porta) {
-        this.palavra = palavra;
-        this.porta = porta;
-        
-    }
-
     @Override
     public void run() {
         try {
 
-            while (rodando) {
-
-                if (palavra.length() > 0) {
-
-                    saida.println(palavra);
-                    Thread.sleep(1000);
-                    palavra = "";
-                }
+            if (palavra.equals("sair")) {
+                conectado = false;
+            } else {
+                saida.println(palavra);
             }
-        } catch (InterruptedException ex) {
+
+            saida.close();
+
+            socket.close();
+        } catch (IOException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

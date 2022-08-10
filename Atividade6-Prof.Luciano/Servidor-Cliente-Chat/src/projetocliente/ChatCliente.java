@@ -6,15 +6,10 @@
 package projetocliente;
 
 import java.awt.Rectangle;
-import java.io.IOException;
-import java.net.Socket;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import servidorcliente.ServidorCliente;
 
 public class ChatCliente extends javax.swing.JFrame {
-    Cliente cliente;
+
     public ChatCliente() {
         
         initComponents();
@@ -26,8 +21,6 @@ public class ChatCliente extends javax.swing.JFrame {
 //        servidorCliente.setLocationRelativeTo(null);
 //
 //        servidorCliente.setVisible(true);
-        
-        cliente =new Cliente();
     }
 
     /**
@@ -41,13 +34,25 @@ public class ChatCliente extends javax.swing.JFrame {
 
         jpCliente1 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        txaSaida = new javax.swing.JTextArea();
+        txaCliente1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         btnEnviarClt_1 = new javax.swing.JButton();
         txfPortClt_1 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txaEntrada = new javax.swing.JTextArea();
+        jpCliente2 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        txaCliente2 = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        btnEnviarClt_2 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        txfPortClt_2 = new javax.swing.JTextField();
+        jpCliente3 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        txaCliente3 = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
+        btnEnviarClt_3 = new javax.swing.JButton();
+        txfPortClt_3 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -57,12 +62,12 @@ public class ChatCliente extends javax.swing.JFrame {
         jpCliente1.setMinimumSize(new java.awt.Dimension(230, 350));
         jpCliente1.setPreferredSize(new java.awt.Dimension(230, 350));
 
-        txaSaida.setColumns(10);
-        txaSaida.setLineWrap(true);
-        txaSaida.setRows(5);
-        txaSaida.setTabSize(0);
-        txaSaida.setWrapStyleWord(true);
-        jScrollPane4.setViewportView(txaSaida);
+        txaCliente1.setColumns(10);
+        txaCliente1.setLineWrap(true);
+        txaCliente1.setRows(5);
+        txaCliente1.setTabSize(0);
+        txaCliente1.setWrapStyleWord(true);
+        jScrollPane4.setViewportView(txaCliente1);
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -83,10 +88,6 @@ public class ChatCliente extends javax.swing.JFrame {
 
         jLabel6.setText("Porta:");
 
-        txaEntrada.setColumns(20);
-        txaEntrada.setRows(5);
-        jScrollPane1.setViewportView(txaEntrada);
-
         javax.swing.GroupLayout jpCliente1Layout = new javax.swing.GroupLayout(jpCliente1);
         jpCliente1.setLayout(jpCliente1Layout);
         jpCliente1Layout.setHorizontalGroup(
@@ -96,7 +97,7 @@ public class ChatCliente extends javax.swing.JFrame {
                     .addGroup(jpCliente1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txfPortClt_1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -106,10 +107,7 @@ public class ChatCliente extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jpCliente1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
-                    .addGroup(jpCliente1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1)))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jpCliente1Layout.setVerticalGroup(
@@ -124,13 +122,150 @@ public class ChatCliente extends javax.swing.JFrame {
                         .addGroup(jpCliente1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txfPortClt_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(btnEnviarClt_1)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        jpCliente2.setBackground(new java.awt.Color(204, 255, 204));
+        jpCliente2.setMinimumSize(new java.awt.Dimension(230, 350));
+        jpCliente2.setPreferredSize(new java.awt.Dimension(230, 350));
+
+        txaCliente2.setColumns(10);
+        txaCliente2.setLineWrap(true);
+        txaCliente2.setRows(5);
+        txaCliente2.setTabSize(0);
+        txaCliente2.setWrapStyleWord(true);
+        jScrollPane5.setViewportView(txaCliente2);
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setText("Cliente_2");
+
+        btnEnviarClt_2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEnviarClt_2.setForeground(new java.awt.Color(0, 153, 51));
+        btnEnviarClt_2.setText("Enviar");
+        btnEnviarClt_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarClt_2ActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Porta:");
+
+        txfPortClt_2.setBackground(new java.awt.Color(0, 0, 0));
+        txfPortClt_2.setForeground(new java.awt.Color(51, 204, 0));
+        txfPortClt_2.setText("12345");
+
+        javax.swing.GroupLayout jpCliente2Layout = new javax.swing.GroupLayout(jpCliente2);
+        jpCliente2.setLayout(jpCliente2Layout);
+        jpCliente2Layout.setHorizontalGroup(
+            jpCliente2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpCliente2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpCliente2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                    .addGroup(jpCliente2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txfPortClt_2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(jpCliente2Layout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(btnEnviarClt_2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jpCliente2Layout.setVerticalGroup(
+            jpCliente2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpCliente2Layout.createSequentialGroup()
+                .addGroup(jpCliente2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpCliente2Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jLabel2))
+                    .addGroup(jpCliente2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jpCliente2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txfPortClt_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(btnEnviarClt_2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jpCliente3.setBackground(new java.awt.Color(255, 153, 153));
+        jpCliente3.setMinimumSize(new java.awt.Dimension(230, 350));
+        jpCliente3.setPreferredSize(new java.awt.Dimension(230, 350));
+
+        txaCliente3.setColumns(10);
+        txaCliente3.setLineWrap(true);
+        txaCliente3.setRows(5);
+        txaCliente3.setTabSize(0);
+        txaCliente3.setWrapStyleWord(true);
+        jScrollPane6.setViewportView(txaCliente3);
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Cliente_3");
+
+        btnEnviarClt_3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnEnviarClt_3.setForeground(new java.awt.Color(0, 153, 51));
+        btnEnviarClt_3.setText("Enviar");
+        btnEnviarClt_3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEnviarClt_3ActionPerformed(evt);
+            }
+        });
+
+        txfPortClt_3.setBackground(new java.awt.Color(0, 0, 0));
+        txfPortClt_3.setForeground(new java.awt.Color(51, 204, 0));
+        txfPortClt_3.setText("12345");
+
+        jLabel4.setText("Porta:");
+
+        javax.swing.GroupLayout jpCliente3Layout = new javax.swing.GroupLayout(jpCliente3);
+        jpCliente3.setLayout(jpCliente3Layout);
+        jpCliente3Layout.setHorizontalGroup(
+            jpCliente3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpCliente3Layout.createSequentialGroup()
+                .addGroup(jpCliente3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpCliente3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
+                    .addGroup(jpCliente3Layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(btnEnviarClt_3)
+                        .addGap(0, 74, Short.MAX_VALUE))
+                    .addGroup(jpCliente3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txfPortClt_3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jpCliente3Layout.setVerticalGroup(
+            jpCliente3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpCliente3Layout.createSequentialGroup()
+                .addGroup(jpCliente3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpCliente3Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel3))
+                    .addGroup(jpCliente3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jpCliente3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txfPortClt_3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEnviarClt_3)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -140,13 +275,20 @@ public class ChatCliente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jpCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jpCliente2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jpCliente3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jpCliente1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jpCliente3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpCliente2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jpCliente1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -154,11 +296,23 @@ public class ChatCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEnviarClt_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarClt_1ActionPerformed
-    cliente.enviar(txaSaida.getText(),txfPortClt_1.getText());
+        new Thread(new Cliente(txaCliente1.getText(),txfPortClt_1.getText())).start();
         //Apaga campo mensagem
-        txaSaida.setText("");
+        txaCliente1.setText("");
 
     }//GEN-LAST:event_btnEnviarClt_1ActionPerformed
+
+    private void btnEnviarClt_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarClt_2ActionPerformed
+        new Thread(new Cliente(txaCliente2.getText(),txfPortClt_2.getText())).start();
+        //Apaga campo mensagem
+        txaCliente2.setText("");
+    }//GEN-LAST:event_btnEnviarClt_2ActionPerformed
+
+    private void btnEnviarClt_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarClt_3ActionPerformed
+        new Thread(new Cliente(txaCliente3.getText(),txfPortClt_3.getText())).start();
+        //Apaga campo mensagem
+        txaCliente3.setText("");
+    }//GEN-LAST:event_btnEnviarClt_3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,13 +351,25 @@ public class ChatCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnviarClt_1;
+    private javax.swing.JButton btnEnviarClt_2;
+    private javax.swing.JButton btnEnviarClt_3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JPanel jpCliente1;
-    private javax.swing.JTextArea txaEntrada;
-    private javax.swing.JTextArea txaSaida;
+    private javax.swing.JPanel jpCliente2;
+    private javax.swing.JPanel jpCliente3;
+    private javax.swing.JTextArea txaCliente1;
+    private javax.swing.JTextArea txaCliente2;
+    private javax.swing.JTextArea txaCliente3;
     private javax.swing.JTextField txfPortClt_1;
+    private javax.swing.JTextField txfPortClt_2;
+    private javax.swing.JTextField txfPortClt_3;
     // End of variables declaration//GEN-END:variables
 }

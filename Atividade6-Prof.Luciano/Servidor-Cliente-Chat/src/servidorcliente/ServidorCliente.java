@@ -47,12 +47,11 @@ public class ServidorCliente extends javax.swing.JFrame {
                 entrada = new Scanner(socket.getInputStream());
                 txaServer.append("Cliente " + socket.getPort() + " conectou." + "\n");
                 while (entrada.hasNextLine()) {
-
+//                System.out.println(socket);
+//                    System.out.println(entrada.nextLine());
                     txaServer.append(entrada.nextLine() + "\n");
                 }
-                
                 txaServer.append("==============================================" + "\n");
-                txaServer.append("Cliente " + socket.getPort() + " saiu." + "\n");
             } catch (IOException ex) {
                 Logger.getLogger(Servico.class.getName()).log(Level.SEVERE, null, ex);
             }
