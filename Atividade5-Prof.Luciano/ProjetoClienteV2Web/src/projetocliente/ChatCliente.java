@@ -14,13 +14,13 @@ public class ChatCliente extends javax.swing.JFrame {
         
         initComponents();
         
-        ServidorCliente servidorCliente = new ServidorCliente();
-
-        Rectangle server = servidorCliente.getBounds();
-//        centro da tela
-        servidorCliente.setLocationRelativeTo(null);
-
-        servidorCliente.setVisible(true);
+//        ServidorCliente servidorCliente = new ServidorCliente();
+//
+//        Rectangle server = servidorCliente.getBounds();
+////        centro da tela
+//        servidorCliente.setLocationRelativeTo(null);
+//
+//        servidorCliente.setVisible(true);
     }
 
     /**
