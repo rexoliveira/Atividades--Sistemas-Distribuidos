@@ -1,26 +1,33 @@
 package projetocliente;
 
+import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import servidorcliente.ServidorCliente;
 
 public class Cliente implements Runnable {
 
     private Socket socket;
     private boolean conectado = false;
     private PrintStream saida;
-    public String palavra ;
+    public String palavra = "";
+    public String porta;
 
-    public Cliente(String palavra, String porta) {
-        this.palavra = palavra;
+    public Cliente() {
 
         try {
-            socket = new Socket("localhost", Integer.parseInt(porta));
+            socket = new Socket("localhost", Integer.parseInt("12345"));
 
             saida = new PrintStream(socket.getOutputStream());
+            
+            conectado = true;
 
         } catch (IOException ex) {
             Mensagem("Erro tentando conectar ao servidor.");
@@ -28,21 +35,27 @@ public class Cliente implements Runnable {
         }
     }
 
+    public void saida(String palavra) {
+        this.palavra = palavra;
+
+    }
+
     @Override
     public void run() {
-        try {
 
-            if (palavra.equals("sair")) {
-                conectado = false;
-            } else {
-                saida.println(palavra);
+        while (conectado) {
+            //Como está muito rápido se não colodar um dalay antes o if, não é impresso
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (palavra.length() > 0) {
+                saida.println(this.palavra);
+                palavra = "";
+
             }
 
-            saida.close();
-
-            socket.close();
-        } catch (IOException ex) {
-            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
