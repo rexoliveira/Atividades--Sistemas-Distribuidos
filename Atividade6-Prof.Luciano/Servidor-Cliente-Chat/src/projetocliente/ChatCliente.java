@@ -5,24 +5,16 @@ import java.net.Socket;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import servidorcliente.ServidorCliente;
 
 public class ChatCliente extends javax.swing.JFrame {
 
     Cliente cliente;
-    private Socket socket;
-    private Scanner entrada;
+       
 
-    public ChatCliente() {
-    }
-
-    ;
-    public ChatCliente(Socket socket) {
-
+    public ChatCliente() throws IOException {
         initComponents();
-
         new Thread(cliente = new Cliente()).start();
-        this.socket = socket;
+             
     }
 
     @SuppressWarnings("unchecked")
@@ -181,9 +173,14 @@ public class ChatCliente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ChatCliente().setVisible(true);
+                try {
+                    new ChatCliente().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(ChatCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
+
     }
 
 
@@ -197,24 +194,5 @@ public class ChatCliente extends javax.swing.JFrame {
     private javax.swing.JTextArea txaSaida;
     private javax.swing.JTextField txfPort;
     // End of variables declaration//GEN-END:variables
-    public class ServicoChat implements Runnable {
 
-            public void run() {
-                System.out.println("TESTE");
-                try {
-                    entrada = new Scanner(socket.getInputStream());
-                    txaEntrada.append("==============================================" + "\n");
-                    txaEntrada.append("Cliente " + socket.getPort() + " conectou!" + "\n");
-                    while (entrada.hasNextLine()) {
-
-                        txaEntrada.append("Cliente [" + socket.getPort() + "]: " + entrada.nextLine() + "\n");
-
-                    }
-
-                    txaEntrada.append("Cliente " + socket.getPort() + " saiu!" + "\n");
-                } catch (IOException ex) {
-                    Logger.getLogger(ServidorCliente.Servico.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
 }

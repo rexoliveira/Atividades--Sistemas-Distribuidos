@@ -1,19 +1,12 @@
 package servidorcliente;
 
-import java.awt.Color;
-import java.awt.Rectangle;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
-import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
 
 /**
  *
@@ -24,12 +17,6 @@ public class ServidorCliente extends javax.swing.JFrame {
     public ServidorCliente() {
         initComponents();
         new Thread(new Servidor()).start();
-    }
-
-//    Criar novo server após start do primeiro
-    public ServidorCliente(String porta) throws IOException {
-        initComponents();
-        new Thread(new Servidor(porta)).start();
     }
 
     public class Servico implements Runnable {
@@ -45,12 +32,13 @@ public class ServidorCliente extends javax.swing.JFrame {
         public void run() {
             try {
                 entrada = new Scanner(socket.getInputStream());
-                txaServer.append("Cliente " + socket.getPort() + " conectou." + "\n");
+                txaServer.append("==============================================" + "\n");
+                txaServer.append("Cliente " + socket.getPort() + " conectou!" + "\n");
                 while (entrada.hasNextLine()) {
-//                System.out.println(socket);
-//                    System.out.println(entrada.nextLine());
+
                     txaServer.append(entrada.nextLine() + "\n");
                 }
+                txaServer.append("Cliente " + socket.getPort() + " saiu!" + "\n");
                 txaServer.append("==============================================" + "\n");
             } catch (IOException ex) {
                 Logger.getLogger(Servico.class.getName()).log(Level.SEVERE, null, ex);
@@ -64,10 +52,15 @@ public class ServidorCliente extends javax.swing.JFrame {
         private ServerSocket servidor;
         private boolean conectado = false;
         private String porta = "";
-
+        
         public Servidor() {
             try {
                 servidor = new ServerSocket(Integer.parseInt(txfPortServer.getText()));
+
+                InetAddress inet = servidor.getInetAddress();
+                System.out.println("HostName=" + inet.getHostName());
+                System.out.println("HostAddress="+inet.getHostAddress());
+
                 conectado = true;
                 Mensagem("Servidor conectado.");
                 txaServer.append(("Servidor conectado.\n").toUpperCase());
@@ -83,20 +76,9 @@ public class ServidorCliente extends javax.swing.JFrame {
             }
         }
 
-        //Criar Novo servidor
-        public Servidor(String porta) throws IOException {
-            servidor = new ServerSocket(Integer.parseInt(porta));
-            conectado = true;
-            Mensagem("Servidor conectado.");
-            txaServer.append(("Servidor conectado.\n").toUpperCase());
-            txaServer.append("#####################################################" + "\n");
-            txaServer.append(("Porta Servidor = " + servidor.getLocalPort() + ".\n").toUpperCase());
-            txaServer.append("#####################################################" + "\n");
-        }
-
         @Override
         public void run() {
-
+            
             while (conectado) {
                 try {
                     Socket socket = servidor.accept();
@@ -212,47 +194,7 @@ public class ServidorCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txfPortServerActionPerformed
 
     private void btnStartServerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartServerActionPerformed
-        if (txfPortServer.getText().equals("12345")) {
-
-            JDialog dialog = new JOptionPane("Altere a porta para um valor diferente " + txfPortServer.getText() + ".",
-                    JOptionPane.INFORMATION_MESSAGE,
-                    JOptionPane.DEFAULT_OPTION).createDialog("Trocar Porta");
-            dialog.setAlwaysOnTop(true);
-            dialog.setVisible(true);
-
-            txfPortServer.requestFocus(true);
-            Border border;
-            
-            
-            int delay = 10000;   // tempo de espera antes da 1ª execução da tarefa.
-            int interval = 10000;  // intervalo no qual a tarefa será executada.
-            Timer timer = new Timer();
-            timer.scheduleAtFixedRate(new TimerTask() {
-                public void run() {
-                    
-                    txfPortServer.setBorder(new LineBorder(Color.GREEN));
-                }
-            }, delay, interval);
-            txfPortServer.setBorder(new LineBorder(Color.RED));
-        } else {
-
-            try {
-                ServidorCliente servidorCliente = new ServidorCliente(txfPortServer.getText());
-
-//        centro da tela
-                servidorCliente.setLocationRelativeTo(null);
-
-                servidorCliente.setVisible(true);
-//            Define a porta do atual servidor
-                servidorCliente.txfPortServer.setText(txfPortServer.getText());
-                servidorCliente.btnStartServer.setVisible(false);
-                servidorCliente.txfPortServer.setEnabled(false);
-            } catch (IOException ex) {
-                Logger.getLogger(ServidorCliente.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            //Volta para PORTA padrão
-            txfPortServer.setText("12345");
-        }
+   
     }//GEN-LAST:event_btnStartServerActionPerformed
 
     /**

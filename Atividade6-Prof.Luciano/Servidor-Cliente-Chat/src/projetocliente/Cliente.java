@@ -1,16 +1,11 @@
 package projetocliente;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import servidorcliente.ServidorCliente;
 
 public class Cliente implements Runnable {
 
@@ -25,8 +20,14 @@ public class Cliente implements Runnable {
         try {
             socket = new Socket("localhost", Integer.parseInt("12345"));
 
+           
             saida = new PrintStream(socket.getOutputStream());
-            
+
+            //Não Aagar Escreve pelo terminal-Minha Implementação
+//            Scanner teclado = new Scanner(System.in);
+//            while (teclado.hasNextLine()) {
+//                saida.println(teclado.nextLine());
+//            }
             conectado = true;
 
         } catch (IOException ex) {
@@ -37,7 +38,6 @@ public class Cliente implements Runnable {
 
     public void saida(String palavra) {
         this.palavra = palavra;
-
     }
 
     @Override
