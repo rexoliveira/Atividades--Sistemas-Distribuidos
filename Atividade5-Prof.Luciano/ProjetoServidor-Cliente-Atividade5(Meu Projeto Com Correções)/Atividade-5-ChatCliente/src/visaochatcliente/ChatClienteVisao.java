@@ -21,8 +21,6 @@ public class ChatClienteVisao extends javax.swing.JFrame {
 
         jpApp = new javax.swing.JPanel();
         lblCliente = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        txaEntrada = new javax.swing.JTextArea();
         jScrollPane4 = new javax.swing.JScrollPane();
         txaSaida = new javax.swing.JTextArea();
         btnEnviar = new javax.swing.JButton();
@@ -38,15 +36,6 @@ public class ChatClienteVisao extends javax.swing.JFrame {
         lblCliente.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblCliente.setForeground(new java.awt.Color(255, 255, 255));
         lblCliente.setText("Cliente");
-
-        txaEntrada.setEditable(false);
-        txaEntrada.setColumns(5);
-        txaEntrada.setLineWrap(true);
-        txaEntrada.setRows(3);
-        txaEntrada.setTabSize(0);
-        txaEntrada.setWrapStyleWord(true);
-        txaEntrada.setEnabled(false);
-        jScrollPane5.setViewportView(txaEntrada);
 
         txaSaida.setColumns(5);
         txaSaida.setLineWrap(true);
@@ -71,20 +60,17 @@ public class ChatClienteVisao extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpAppLayout.createSequentialGroup()
                 .addGroup(jpAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpAppLayout.createSequentialGroup()
-                        .addGroup(jpAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpAppLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lblCliente))
-                            .addGroup(jpAppLayout.createSequentialGroup()
-                                .addGap(76, 76, 76)
-                                .addComponent(btnEnviar)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(lblCliente)
+                        .addGap(0, 171, Short.MAX_VALUE))
                     .addGroup(jpAppLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jpAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane5)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jpAppLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(btnEnviar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpAppLayout.setVerticalGroup(
             jpAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,12 +78,10 @@ public class ChatClienteVisao extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(lblCliente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addGap(18, 18, 18)
                 .addComponent(btnEnviar)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -113,7 +97,7 @@ public class ChatClienteVisao extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jpApp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpApp, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -173,10 +157,8 @@ public class ChatClienteVisao extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEnviar;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JPanel jpApp;
     private javax.swing.JLabel lblCliente;
-    private javax.swing.JTextArea txaEntrada;
     private javax.swing.JTextArea txaSaida;
     // End of variables declaration//GEN-END:variables
 

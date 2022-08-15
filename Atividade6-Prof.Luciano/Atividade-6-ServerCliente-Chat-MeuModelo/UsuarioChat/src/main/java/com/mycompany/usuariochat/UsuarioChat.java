@@ -39,16 +39,18 @@ public class UsuarioChat extends JFrame implements ActionListener, KeyListener, 
     private JTextField txfIp;
     private JTextField txfPorta;
     private JTextField txfNomeUsuario;
+    
+    private String painel_um;
 
     public UsuarioChat() throws IOException {
-        JLabel lblVerifica = new JLabel("Verificar!");
+        JLabel lblVerifica = new JLabel("Verifique informações de conexão");
         txfIp = new JTextField("127.0.0.1");
         txfPorta = new JTextField("12345");
         txfNomeUsuario = new JTextField("Nome Usuario");
         //Cria o array de objetos
         Object[] informacoes = {lblVerifica, txfIp, txfPorta, txfNomeUsuario};
         //Mostra um alerta com as informações desses objetos
-        JOptionPane.showConfirmDialog(null, informacoes);
+        JOptionPane.showConfirmDialog(null, informacoes,"Painel de seleção das informações",JOptionPane.OK_CANCEL_OPTION);
         //Cria um PAINEL
         pnlConteudo = new JPanel();
         //Abaixo define as propriedas do painel
@@ -237,4 +239,5 @@ public class UsuarioChat extends JFrame implements ActionListener, KeyListener, 
 
         new Thread(new UsuarioChat()).start();
     }
+
 }
